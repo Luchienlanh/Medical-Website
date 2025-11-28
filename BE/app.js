@@ -1,7 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import { logger } from './middleware/index.js'
+import { logger, errorHandler } from './middleware/index.js'
 
 // Import routes
 // import authRoutes from './routes/auth.js'
@@ -31,6 +31,7 @@ app.get('/', (req, res) => {
   res.send('Hello Luc dz')
 });
 
+app.use(errorHandler)
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`)

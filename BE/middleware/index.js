@@ -1,6 +1,6 @@
 // import { authenticateUser, authenticateAdmin, authenticate } from './auth.js';
 // import { requireRole, requireAdminRole } from './roleAuth.js';
-// import errorHandler from './errorHandler.js';
+import {errorHandler} from './errorHandler.js';
 import {logger} from './logger.js';
 // import validate from './validate.js';
 
@@ -10,7 +10,7 @@ export {
   // authenticate,
   // requireRole,
   // requireAdminRole,
-  // errorHandler,
+  errorHandler,
   logger
   // validate
 };
