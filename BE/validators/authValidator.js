@@ -10,5 +10,81 @@ export const signUpSchema = Joi.object({
         'string.min': 'Tên đăng nhập phải có ít nhất 3 ký tự!',
         'string.max': 'Tên đăng nhập không được quá 30 ký tự!'
     }),
-    
+    passWord: Joi.string()
+    .required()
+    .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
+    .min(8)
+    .messages({
+        'string.empty': 'Mật khẩu không được để trống!',
+        'string.pattern.base': 'Mật khẩu phải có ít nhất 1 chữ thường, 1 chữ hoa và 1 ký tự!',
+        'string.min': 'Mật khẩu phải có ít nhất 8 ký tự!'
+    }),
+    email: Joi.string()
+    .email()
+    .required()
+    .messages({
+        'string.email': 'Email không hợp lệ!',
+        'string.empty': 'Email không được để trống!'
+    }),
+    address: Joi.string().optional(),
+    DoB: Joi.date().optional(),
+    phoneNum: Joi.string()
+    .pattern(/^[0-9]{10}$/)
+    .messages({
+        'string.pattern.base': 'Số điện thoại phải có 10 chữ số!'
+    }),
+    sex: Joi.boolean().optional()
+})
+
+export const loginSchema = Joi.object({
+    userName: Joi.string().required(),
+    passWord: Joi.string().required()
+})
+
+export const updatePasswordSchema = Joi.object({
+    oldPassword: Joi.string().required(),
+    newPassword: Joi.string()
+    .required()
+    .min(8)
+    .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
+    .messages({
+        'string.pattern.base': 'Mật khẩu phải có ít nhất 1 chữ thường, 1 chữ in hoa và 1 ký tự!',
+        'string.empty': 'Mật khẩu không được để trống'
+    }),
+    confirmPassword: Joi.string()
+    .required()
+    .valid(Joi.ref('newPassword'))
+    .messages({
+        'any.only': 'Xác nhận mật khẩu không khớp',
+        'string.empty': 'Vui lòng nhập mật khẩu mới'
+    })
+})
+
+export const resetPasswordRequestSchema = Joi.object({
+    email: Joi.string()
+    .email()
+    .required()
+    .messages({
+        'string.email': 'Email không hợp lệ!',
+        'string.empty': 'Email không được để trống!'
+    })
+})
+
+export const resetPasswordSchema = Joi.object({
+    token: Joi.string().required(),
+    newPassword: Joi.string()
+    .required()
+    .min(8)
+    .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
+    .messages({
+        'string.pattern.base': 'Mật khẩu phải có ít nhất 1 chữ thường, 1 chữ in hoa và 1 ký tự!',
+        'string.empty': 'Mật khẩu không được để trống'
+    }),
+    confirmPassword: Joi.string()
+    .required()
+    .valid(Joi.ref('newPassword'))
+    .messages({
+        'any.only': 'Xác nhận mật khẩu không khớp',
+        'string.empty': 'Vui lòng nhập mật khẩu mới'
+    })
 })
