@@ -1,13 +1,13 @@
 import mongoose from 'mongoose'
 
 const paymentSchema = new mongoose.Schema({
-    paymentId: {type: String, require: true, index: true, unique: true},
-    saleInvoiceId: {type: String, ref: 'SaleInvoice', require: true},
-    transactionId: {type: String, ref: 'StockTransaction', require: true},
+    paymentId: {type: String, required: true, index: true, unique: true},
+    saleInvoiceId: {type: String, ref: 'SaleInvoice', required: true},
+    transactionId: {type: String, ref: 'StockTransaction', required: true},
     paymentMethod: {type: String, Enumerator: ['Momo', 'ZaloPay', 'VNPAY']},
-    amount: {type: Number, require: true},
+    amount: {type: Number, required: true},
     paymentStatus: {type: String, Enumerator: ['Pending', 'Success', 'Failed', 'Refunded']},
-    paymentDate: {type: Date, require: true}
+    paymentDate: {type: Date, required: true}
 }, {timestamps: true});
 
-export const Payment = mongoose.Model('Payment', paymentSchema)
+export const Payment = mongoose.model('Payment', paymentSchema)

@@ -1,14 +1,14 @@
 import mongoose from 'mongoose'
 
 const productSchema = new mongoose.Schema({
-    productId: { type: String, require: true, index: true, unique: true },
-    productName: { type: String, require: true },
-    manufacturerId: { type: String, ref: 'Manufacturer', require: true },
-    typeId: { type: String, ref: 'Category', require: true },
-    img: { type: Image, require: true },
-    productDesc: { type: String, require: true },
-    packagingType: { type: String, Enumerator: ['Blister', 'Box', 'Bottle', 'Tube', 'Sachet', 'Ampoule', 'Vial', 'Bag'], require: true },
+    productId: { type: String, required: true, index: true, unique: true },
+    productName: { type: String, required: true },
+    manufacturerId: { type: String, ref: 'Manufacturer', required: true },
+    typeId: { type: String, ref: 'Category', required: true },
+    img: { type: Image, required: true },
+    productDesc: { type: String, required: true },
+    packagingType: { type: String, Enumerator: ['Blister', 'Box', 'Bottle', 'Tube', 'Sachet', 'Ampoule', 'Vial', 'Bag'], required: true },
     status: { type: Boolean }
 }, { timestamps: true });
 
-export const Product = mongoose.Model('Product', productSchema)
+export const Product = mongoose.model('Product', productSchema)

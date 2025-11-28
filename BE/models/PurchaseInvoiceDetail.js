@@ -1,11 +1,11 @@
 import mongoose from 'mongoose'
 
 const purchaseInvoiceDetailSchema = new mongoose.Schema({
-    purchaseInvoiceId: {type: String, ref: 'PurchaseInvoice', require: true},
-    productId: {type: String, ref: 'Product', require: true},
-    quantity: {type: Number, require: true},
-    unitPrice: {type: Number, require: true},
-    totalPrice: {type: Number, require: true}
+    purchaseInvoiceId: {type: String, ref: 'PurchaseInvoice', required: true},
+    productId: {type: String, ref: 'Product', required: true},
+    quantity: {type: Number, required: true},
+    unitPrice: {type: Number, required: true},
+    totalPrice: {type: Number, required: true}
 }, {timestamps: true});
 
 purchaseInvoiceDetailSchema.index(
@@ -13,4 +13,4 @@ purchaseInvoiceDetailSchema.index(
     {unique: true}
 )
 
-export const PurchaseInvoiceDetail = mongoose.Model('PurchaseInvoiceDetail', purchaseInvoiceDetailSchema)
+export const PurchaseInvoiceDetail = mongoose.model('PurchaseInvoiceDetail', purchaseInvoiceDetailSchema)

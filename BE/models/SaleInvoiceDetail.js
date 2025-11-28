@@ -1,12 +1,12 @@
 import mongoose from 'mongoose'
 
 const saleInvoiceDetailSchema = new mongoose.Schema({
-    saleInvoiceId: {type: String, ref: 'SaleInvoice', require: true},
-    batchId: {type: String, ref: 'ProductBatch', require: true},
-    productId: {type: String, ref: 'Product', require: true},
-    quantity: {type: Number, require: true},
-    unitPrice: {type: Number, require: true},
-    totalPrice: {type: Number, require: true}
+    saleInvoiceId: {type: String, ref: 'SaleInvoice', required: true},
+    batchId: {type: String, ref: 'ProductBatch', required: true},
+    productId: {type: String, ref: 'Product', required: true},
+    quantity: {type: Number, required: true},
+    unitPrice: {type: Number, required: true},
+    totalPrice: {type: Number, required: true}
 }, {timestamps: true});
 
 saleInvoiceDetailSchema.index(
@@ -14,4 +14,4 @@ saleInvoiceDetailSchema.index(
     {unique: true}
 )
 
-export const SaleInvoiceDetail = mongoose.Model('SaleInvoiceDetail', saleInvoiceDetailSchema)
+export const SaleInvoiceDetail = mongoose.model('SaleInvoiceDetail', saleInvoiceDetailSchema)

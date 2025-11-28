@@ -1,10 +1,10 @@
 import mongoose from 'mongoose'
 
 const purchaseInvoiceSchema = new mongoose.Schema({
-    purchaseInvoiceId: {type: String, require: true, index: true, unique: true},
-    manufacturerId: {type: String, ref: 'Manufacturer', require: true},
-    dateImport: {type: Date, require: true},
+    purchaseInvoiceId: {type: String, required: true, index: true, unique: true},
+    manufacturerId: {type: String, ref: 'Manufacturer', required: true},
+    dateImport: {type: Date, required: true},
     totalBill: {type: Number}
 }, {timestamps: true});
 
-export const PurchaseInvoice = mongoose.Model('PurchaseInvoice', purchaseInvoiceSchema)
+export const PurchaseInvoice = mongoose.model('PurchaseInvoice', purchaseInvoiceSchema)
