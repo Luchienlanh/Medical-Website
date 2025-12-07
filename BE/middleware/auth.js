@@ -5,7 +5,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-export const verifyToken = async (req, res, next) => {
+// Middleware xác thực chung (User hoặc Admin đều được)
+export const authenticate = async (req, res, next) => {
     try {
         const authHeader = req.header('Authorization');
         const token = authHeader && authHeader.split(' ')[1];
@@ -46,4 +47,32 @@ export const verifyToken = async (req, res, next) => {
             message: 'Token không hợp lệ hoặc đã hết hạn'
         });
     }
+};
+
+// Middleware chỉ cho phép User
+export const authenticateUser = async (req, res, next) => {
+    await authenticate(req, res, () => {
+        if (req.user) {
+            next();
+        } else {
+            return res.status(403).json({
+                success: false,
+                message: 'Yêu cầu quyền truy cập của User'
+            });
+        }
+    });
+};
+
+// Middleware chỉ cho phép Admin
+export const authenticateAdmin = async (req, res, next) => {
+    await authenticate(req, res, () => {
+        if (req.admin) {
+            next();
+        } else {
+            return res.status(403).json({
+                success: false,
+                message: 'Yêu cầu quyền truy cập của Admin'
+            });
+        }
+    });
 };
