@@ -1,4 +1,4 @@
-import { Role } from '../models/Role.js';
+import { Role } from '../models/auth/Role.js';
 
 // Middleware kiểm tra quyền dựa trên roleName
 export const requireRole = (...allowedRoles) => {
