@@ -4,6 +4,7 @@ export const createProductSchema = Joi.object({
     productName: Joi.string()
     .required()
     .messages({
+        'any.required': 'Tên sản phẩm là bắt buộc!',
         'string.empty': 'Tên sản phẩm không được để trống!'
     }),
     manufacturerId: Joi.string().required(),
@@ -14,6 +15,7 @@ export const createProductSchema = Joi.object({
     .required()
     .valid('Blister', 'Box', 'Bottle', 'Tube', 'Sachet', 'Ampoule', 'Vial', 'Bag')
     .messages({
+        'any.required': 'Loại bao bì là bắt buộc!',
         'string.empty': 'Loại bao bì không được để trống!',
         'any.only': 'Loại bao bì không hợp lệ!'
     }),

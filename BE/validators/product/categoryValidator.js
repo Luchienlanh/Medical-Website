@@ -2,6 +2,7 @@ export const createCategorySchema = Joi.object({
     categoryName: Joi.string()
     .required()
     .messages({
+        'any.required': 'Tên loại sản phẩm là bắt buộc!',
         'string.empty': 'Tên loại sản phẩm không được để trống!'
     })
 })

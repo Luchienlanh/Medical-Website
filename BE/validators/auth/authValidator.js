@@ -6,6 +6,7 @@ export const signUpSchema = Joi.object({
     .min(3)
     .max(30)
     .messages({
+        'any.required': 'Tên đăng nhập là bắt buộc!',
         'string.empty': 'Tên đăng nhập không được để trống!',
         'string.min': 'Tên đăng nhập phải có ít nhất 3 ký tự!',
         'string.max': 'Tên đăng nhập không được quá 30 ký tự!'
@@ -15,6 +16,7 @@ export const signUpSchema = Joi.object({
     .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
     .min(8)
     .messages({
+        'any.required': 'Mật khẩu là bắt buộc!',
         'string.empty': 'Mật khẩu không được để trống!',
         'string.pattern.base': 'Mật khẩu phải có ít nhất 1 chữ thường, 1 chữ hoa và 1 ký tự!',
         'string.min': 'Mật khẩu phải có ít nhất 8 ký tự!'
@@ -23,6 +25,7 @@ export const signUpSchema = Joi.object({
     .email()
     .required()
     .messages({
+        'any.required': 'Email là bắt buộc!',
         'string.email': 'Email không hợp lệ!',
         'string.empty': 'Email không được để trống!'
     }),
@@ -48,6 +51,7 @@ export const updatePasswordSchema = Joi.object({
     .min(8)
     .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
     .messages({
+        'any.required': 'Mật khẩu mới là bắt buộc!',
         'string.pattern.base': 'Mật khẩu phải có ít nhất 1 chữ thường, 1 chữ in hoa và 1 ký tự!',
         'string.empty': 'Mật khẩu không được để trống'
     }),
@@ -65,6 +69,7 @@ export const resetPasswordRequestSchema = Joi.object({
     .email()
     .required()
     .messages({
+        'any.required': 'Email là bắt buộc!',
         'string.email': 'Email không hợp lệ!',
         'string.empty': 'Email không được để trống!'
     })
@@ -77,6 +82,7 @@ export const resetPasswordSchema = Joi.object({
     .min(8)
     .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
     .messages({
+        'any.required': 'Mật khẩu mới là bắt buộc!',
         'string.pattern.base': 'Mật khẩu phải có ít nhất 1 chữ thường, 1 chữ in hoa và 1 ký tự!',
         'string.empty': 'Mật khẩu không được để trống'
     }),

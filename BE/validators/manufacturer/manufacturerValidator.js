@@ -2,6 +2,7 @@ export const createManufacturerSchema = Joi.object({
     manufacturerName: Joi.string()
     .required()
     .messages({
+        'any.required': 'Tên nhà sản xuất là bắt buộc!',
         'string.empty': 'Tên nhà sản xuất không được để trống!'
     }),
     address: Joi.string().optional(),
