@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 
 const adminSchema = new mongoose.Schema({
-    roleId: {type: mongoose.Schema.Types.ObjectId, ref: 'Role', required: true},
+    roleId: {type: mongoose.Schema.Types.ObjectId, ref: 'Role'},
     adminName: {type: String, required: true},
     passWord: {type: String, required: true},
     address: {type: String},

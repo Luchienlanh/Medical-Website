@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import { logger, errorHandler } from './middleware/index.js'
+import authRoutes from './routes/auth.js'
 
 // Import routes
 // import authRoutes from './routes/auth.js'
@@ -30,6 +31,9 @@ mongoose.connect(process.env.MONGO_URI)
 app.get('/', (req, res) => {
   res.send('Hello Luc dz')
 });
+
+// Mount auth routes
+app.use('/api/auth', authRoutes)
 
 app.use(errorHandler)
 // Start server
