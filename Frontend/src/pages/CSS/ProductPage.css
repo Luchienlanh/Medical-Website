@@ -1,0 +1,17 @@
+.product-page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 100px);
+  width: 100vw;
+  box-sizing: border-box;
+  background: #f4f4f4;
+}
+
+@media (max-width: 768px) {
+  .product-page-wrapper {
+    min-height: auto;
+    height: auto;
+    padding: 10px 0;
+  }
+}

@@ -1,0 +1,71 @@
+.about {
+  width: 80%;
+  height: 70vh;
+  margin-left: 10vw;
+
+  margin-top: 5%;
+
+  border-radius: 10px;
+  background: linear-gradient(to bottom, #e2e4de, #768e52);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about .aboutImg {
+  width: 40%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 100px;
+}
+.about .aboutImg img {
+  width: 250px;
+  height: 250px;
+}
+
+.about .aboutPharmaContent {
+  height: 100%;
+  width: 80%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.about .aboutPharmaContent p {
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 2.5rem;
+  font-family: "roboto";
+}
+
+@media (max-width: 768px) {
+  .about {
+    width: 95%;
+    margin-left: 2.5%; /* Center it */
+    height: auto;
+    padding-bottom: 20px;
+  }
+
+  .about .aboutImg {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .about .aboutImg img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .about .aboutPharmaContent {
+    width: 100%;
+  }
+
+  .about .aboutPharmaContent p {
+    font-size: 1.5rem;
+  }
+}

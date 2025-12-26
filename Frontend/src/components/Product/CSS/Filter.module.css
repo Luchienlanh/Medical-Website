@@ -1,0 +1,75 @@
+.sidebar {
+  flex-basis: 250px; /* Chiều rộng cố định cho sidebar */
+  flex-shrink: 0;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  align-self: flex-start; /* Giữ sidebar ở trên cùng */
+  /* position: fixed; */
+}
+
+.filter-group {
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.filter-group:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.filter-group h3 {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+/* Icon tam giác (optional) */
+.filter-group h3::after {
+  content: " ▼";
+  font-size: 12px;
+  float: right;
+}
+
+.filter-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px; /* Giới hạn chiều cao */
+  overflow-y: auto; /* Thêm thanh cuộn nếu nhiều */
+}
+
+.filter-group li {
+  margin-bottom: 10px;
+}
+
+.filter-group label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filter-group input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.filter-group input[type="text"],
+.filter-group input[type="search"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-sizing: border-box; /* Quan trọng */
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    flex-basis: auto;
+    margin-bottom: 20px;
+  }
+}

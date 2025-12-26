@@ -1,0 +1,273 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  /* height: 100vh; */
+  overflow: hidden;
+}
+.image {
+  width: 60vw;
+  height: 100vh;
+}
+.image img {
+  width: 100%;
+  height: 100%;
+}
+
+.hero {
+  width: 40vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+.logo {
+  position: relative;
+  top: -5%;
+  margin-bottom: 70px;
+  width: 200px;
+  height: 200px;
+}
+.logo img {
+  width: 200px;
+  height: 200px;
+}
+.wrapper {
+  position: relative;
+  top: -20%;
+  display: flex;
+  justify-content: center;
+  /* border: 2px solid green; */
+  width: 100%;
+}
+.form-box {
+  /* border: 2px solid black; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.form-box.login {
+  transform: scaleX(1);
+  transition: 0.2s;
+}
+.form-box.login.hidden {
+  transform: scaleX(0);
+}
+.form {
+  width: 60%;
+}
+
+.form-box h2 {
+  font-size: 3.5rem;
+  font-family: "roboto";
+  color: #2b9474;
+  margin-bottom: 30px;
+}
+.form-box .first-p {
+  font-size: 1.2rem;
+  font-family: "roboto";
+
+  margin-bottom: 50px;
+}
+.form-box .first-p a {
+  text-decoration: none;
+  color: #2b9474;
+}
+.form-box .first-p a:hover {
+  color: #278267;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.form-box .input-box {
+  margin-bottom: 25px;
+
+  position: relative;
+}
+.form-box .input-box input {
+  height: 50px;
+  width: 100%;
+  font-size: 1.2rem;
+  outline: none;
+  border: none;
+  border-bottom: 3px solid black;
+}
+
+.form-box .input-box label {
+  font-size: 1.5rem;
+  position: relative;
+  top: -40px;
+  transition: 0.5s;
+}
+.form-box .input-box .icon {
+  position: absolute;
+  left: 95%;
+  top: 10px;
+  font-size: 1.5rem;
+}
+.form-box .input-box input:focus ~ label,
+.form-box .input-box input:valid ~ label {
+  top: -80px;
+}
+.fa-eye {
+  cursor: pointer;
+  transform: scaleX(0);
+  transition: 0.2s;
+}
+.fa-eye-slash {
+  cursor: pointer;
+  transform: scaleX(1);
+  transition: 0.2s;
+  position: absolute;
+  right: 8%;
+}
+.fa-eye.unhidden {
+  transform: scale(1);
+}
+.fa-eye-slash.hidden {
+  transform: scaleX(0);
+}
+.remember-forgot {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.form a {
+  text-decoration: none;
+  color: #2b9474;
+  font-weight: bold;
+}
+.form a:hover {
+  text-decoration: underline;
+  color: #2b9474;
+}
+
+.btn {
+  width: 100%;
+  height: 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: #2b9474;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.btn:hover {
+  background: #43c9a0;
+  color: #fff;
+}
+.login-register {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+.child-line {
+  width: 30%;
+  height: 1px;
+  background: #000;
+}
+.line p {
+  margin: 0 20px;
+}
+.btn.google {
+  background-color: #fff;
+  color: black;
+  border: 2px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+.btn.google img {
+  height: 70%;
+  margin-right: 20px;
+  position: relative;
+  top: -2px;
+}
+.btn.google:hover {
+  background: #eceaea;
+}
+
+.form-box.register {
+  position: absolute;
+
+  transition: 0.2s;
+}
+
+.register .input-box {
+  margin-bottom: 0;
+  margin-top: 30px;
+}
+
+.agree {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+.register .input-box i {
+  cursor: auto;
+}
+.errorMessage {
+  color: #e74c3c;
+  background-color: #fdecea;
+  padding: 5px;
+  border-radius: 4px;
+
+  font-size: 0.9rem;
+  text-align: center;
+}
+.successMessage {
+  color: #27ae60;
+  background-color: #e8f8f5;
+  padding: 5px;
+  border-radius: 4px;
+
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .root {
+    flex-direction: column;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .image {
+    width: 100vw;
+    height: 30vh;
+    display: none;
+  }
+
+  .hero {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .form {
+    width: 90%;
+  }
+
+  .logo {
+    top: 0;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .wrapper {
+    top: 0;
+  }
+}

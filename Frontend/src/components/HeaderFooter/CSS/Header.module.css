@@ -1,0 +1,259 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  padding: 20px 100px;
+  /* background: transparent; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+  background: #ffffff;
+  border-bottom: 2px solid #ccc;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+.header-hidden {
+  top: -150px;
+}
+
+.logo {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 5%;
+  display: flex;
+  cursor: pointer;
+  /* align-items: flex-start; */
+}
+.logo img {
+  width: 100%;
+  filter: brightness(0.5);
+}
+.navigation a {
+  position: relative;
+  font-size: 1.5rem;
+  color: #2b9474;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 40px;
+}
+.navigation a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #4bdaaf;
+  border-radius: 5px;
+  bottom: -6px;
+  transform-origin: right;
+  /*transform dung de thay doi hinh dang vi tri goc quay cua phan tu */
+  transform: scaleX(0);
+  transition: transform 0.5s;
+}
+.navigation a:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.navigation .product:hover i {
+  transform: rotateX(180deg);
+  transition: 0.5s;
+}
+.list-product {
+  position: absolute;
+  left: 27vw;
+  margin-top: 10px;
+  height: 250px;
+  width: 400px;
+  border: 1px solid #2b9474;
+  border-radius: 10px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: scaleX(0);
+}
+.list-product.active {
+  transform: scaleX(1);
+  transition: 0.5s;
+}
+.list-product a {
+  margin: 0;
+  padding: 10px 0 10px 0;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+.list-product a:hover {
+  text-decoration: underline;
+}
+.list-product a:hover::after {
+  transform: scaleX(0);
+  text-decoration: underline;
+}
+
+.navigation .find-product {
+  height: 50px;
+  width: 500px;
+  margin-left: 40px;
+  border-radius: 30px;
+  border: 2px solid black;
+  font-size: 1.2rem;
+  padding-left: 30px;
+}
+.navigation .find-product::placeholder {
+  font-size: 1.2rem;
+}
+
+.navigation .find-product::-ms-value {
+  padding-left: 50px;
+}
+
+.navigation .btnLogin-popup {
+  width: 130px;
+  height: 50px;
+  background: transparent;
+  border: 2px solid #ccc;
+  /* outline:đường viền bao quanh phần tử */
+  outline: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-left: 40px;
+  transition: 0.5s;
+  color: #2b9474;
+  cursor: pointer;
+  position: relative;
+}
+
+.navigation .btnLogin-popup:hover {
+  background: #2b9474;
+  color: #fff;
+}
+
+.navigation .btnShoppingCart {
+  width: 130px;
+  height: 50px;
+  background: transparent;
+  border: 2px solid #ccc;
+  /* outline:đường viền bao quanh phần tử */
+  outline: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-left: 40px;
+  transition: 0.5s;
+  color: #2b9474;
+  cursor: pointer;
+  position: relative;
+}
+.navigation .btnShoppingCart:hover {
+  background: #2b9474;
+  color: #fff;
+}
+.countProduct {
+  color: #fff;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid red;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: red;
+  right: -10px;
+  top: -10px;
+}
+.productsList {
+  position: absolute;
+  left: 30vw;
+  width: 525px;
+  height: 400px;
+  border: 1px solid #ccc;
+  background: #fff;
+  margin-top: 5px;
+  border-radius: 30px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.productItem {
+  width: 100%;
+  height: 100px;
+  display: flex;
+
+  margin-left: 10px;
+  margin-top: 10px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+.productItem:hover {
+  background: #dfdddd;
+}
+
+.image {
+  height: 100%;
+  width: 60px;
+  overflow: hidden;
+  display: inline-block;
+}
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.description p {
+  font-size: 1.5rem;
+  margin-left: 20px;
+}
+.description .productName {
+  margin-top: 20px;
+}
+.description .cost {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  header {
+    height: auto;
+    padding: 10px;
+    flex-direction: column;
+    position: relative; /* Fixed header on mobile might take too much space */
+  }
+
+  .logo {
+    position: relative;
+    left: 0;
+    margin-bottom: 10px;
+    justify-content: center;
+  }
+  
+  .navigation a {
+    margin-left: 10px;
+    font-size: 1rem;
+  }
+
+  .navigation .find-product {
+    width: 90%;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  
+  .navigation .btnLogin-popup,
+  .navigation .btnShoppingCart {
+    width: 100px;
+    margin-left: 10px;
+    font-size: 0.9em;
+  }
+  
+  .list-product {
+    left: 5%;
+    width: 90%;
+    z-index: 100;
+  }
+}

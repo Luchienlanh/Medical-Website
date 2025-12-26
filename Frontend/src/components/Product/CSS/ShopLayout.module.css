@@ -1,0 +1,37 @@
+.shop-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "filter controls"
+    "filter products";
+  gap: 24px;
+  width: 100%;
+  align-items: start;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.shop-layout > :first-child {
+  grid-area: filter;
+}
+
+.shop-layout > :nth-child(2) {
+  grid-area: controls;
+}
+
+.shop-layout > :nth-child(3) {
+  grid-area: products;
+}
+
+@media (max-width: 768px) {
+  .shop-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "filter"
+      "controls"
+      "products";
+    gap: 15px;
+  }
+}

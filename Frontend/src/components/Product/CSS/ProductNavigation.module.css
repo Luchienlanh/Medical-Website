@@ -1,0 +1,60 @@
+/* :root {
+  --primary-color: #007bff;
+  --border-color: #ddd;
+  --text-color: #333;
+  --bg-light: #f9f9f9;
+} */
+
+.hero {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: transparent;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+  margin-top: 130px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.category-tabs .tab {
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-tabs .tab:hover,
+.category-tabs .tab.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+@media (max-width: 768px) {
+  .category-tabs {
+    margin-top: 20px; /* Reduced from 130px if header is not fixed or handled differently */
+  }
+  
+  .category-tabs .tab {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,155 @@
+.hero {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  height: 930px;
+  margin-bottom: 100px;
+
+  background: #f4f4f4;
+  /* padding: 20px; */
+
+  border: 1px solid #f4f4f4;
+}
+.component img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  border-radius: 10px;
+  /* margin-top: 20px; */
+  /* margin-bottom: 10px; */
+}
+
+.component {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 450px;
+  background: #fff;
+  cursor: pointer;
+
+  border-radius: 10px;
+}
+.component:hover {
+  border: 1px solid #2a64a7;
+}
+
+.desc {
+  margin: 10px;
+  margin-top: 60px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Giới hạn số dòng tối đa là 3 */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  font-weight: bold;
+  overflow: hidden;
+  font-size: 16px;
+  /* margin-bottom: 50px; */
+}
+.price {
+  position: absolute;
+  left: 20px;
+  top: 375px;
+  color: #1c1cda;
+  font-weight: bold;
+
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.button {
+  position: absolute;
+  top: 400px;
+  background-color: #2a64a7;
+  color: white;
+  margin-bottom: 20px;
+  width: 180px;
+  height: 40px;
+  border-radius: 20px;
+  border: 2px solid #2a64a7;
+  font-size: 16px;
+  cursor: pointer;
+}
+button:hover {
+  background: #3073c0;
+}
+
+/* Thêm vào file CallApi.module.css */
+
+.paginationNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.paginationNav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  gap: 8px; /* Khoảng cách giữa các nút */
+}
+
+.paginationNav button {
+  padding: 8px 14px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.paginationNav button:hover {
+  background-color: #f0f0f0;
+}
+
+/* Đây là class quan trọng để làm nổi bật trang đang được chọn */
+.paginationNav button.activePage {
+  background-color: #007bff; /* Thay bằng màu chủ đạo của bạn */
+  color: #fff;
+  border-color: #007bff;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: repeat(2, 1fr);
+    height: auto;
+    gap: 10px;
+  }
+  
+  .component {
+    width: 100%;
+    height: auto;
+    padding-bottom: 15px;
+  }
+
+  .component img {
+    height: 120px;
+  }
+  
+  .price {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin-top: 10px;
+  }
+  
+  .button {
+    position: relative;
+    top: auto;
+    width: 90%;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}

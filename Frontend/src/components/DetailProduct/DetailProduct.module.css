@@ -1,0 +1,334 @@
+/* ProductDetail.module.css */
+body {
+  width: 100%;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  color: #333;
+  display: flex;
+  margin-top: 150px;
+  margin-bottom: 50px;
+  gap: 30px;
+  background-color: #fff;
+}
+
+/* --- Left Column: Images --- */
+.leftColumn {
+  width: 40%;
+  flex-shrink: 0;
+}
+
+.mainImageContainer {
+  position: relative;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainImage {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: contain;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 50px;
+  height: auto;
+}
+
+.gallery {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+}
+
+.galleryItem {
+  width: 70px;
+  height: 70px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.galleryItem.active {
+  border-color: #1d48ba;
+}
+
+.galleryImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* --- Right Column: Info --- */
+.rightColumn {
+  flex: 1;
+}
+
+.brand {
+  color: #1d48ba;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  color: #212529;
+}
+
+.metaInfo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.rating {
+  color: #fdbf2d; /* Gold color for stars */
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sku {
+  color: #777;
+}
+
+/* Flash Sale Banner */
+.flashSaleBanner {
+  background: linear-gradient(90deg, #ff4d4d 0%, #ff9f43 100%);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.timer {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.timerBox {
+  background: white;
+  color: #d63031;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Pricing */
+.priceContainer {
+  margin-bottom: 20px;
+}
+
+.priceRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.currentPrice {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1d48ba;
+}
+
+.unit {
+  font-size: 18px;
+  color: #1d48ba;
+}
+
+.oldPrice {
+  text-decoration: line-through;
+  color: #888;
+  font-size: 16px;
+}
+
+/* Specs Table */
+.specsContainer {
+  margin-bottom: 20px;
+}
+
+.specRow {
+  display: flex;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.specLabel {
+  width: 140px;
+  color: #555;
+  flex-shrink: 0;
+}
+
+.specValue {
+  color: #333;
+  font-weight: 500;
+}
+
+.link {
+  color: #1d48ba;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.unitTag {
+  border: 1px solid #1d48ba;
+  color: #1d48ba;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+/* Promotions */
+.promoBox {
+  background-color: #fff9f0;
+  border: 1px solid #ffeeba;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.promoTitle {
+  font-weight: 700;
+  color: #d35400;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.promoItem {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.promoRadio {
+  margin-top: 3px;
+}
+
+/* Actions */
+.quantitySelector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.qtyBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qtyInput {
+  width: 50px;
+  height: 32px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.btnBuy {
+  flex: 1;
+  background-color: #1d48ba;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 30px; /* Pill shape */
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btnFindStore {
+  flex: 1;
+  background-color: #eef2fe;
+  color: #1d48ba;
+  border: none;
+  padding: 12px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Footer Badges */
+.footerBadges {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+  font-size: 13px;
+}
+
+.badgeItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #333;
+}
+
+.highlightText {
+  color: #d35400;
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .leftColumn {
+    width: 100%;
+  }
+}

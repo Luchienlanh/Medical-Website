@@ -1,0 +1,159 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  font-family: "Inter", sans-serif;
+  width: 100vw;
+  height: 100vh;
+}
+
+.card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+}
+
+.iconContainer {
+  width: 60px;
+  height: 60px;
+  background-color: #e0e7ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: #4f46e5;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.emailHighlight {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.otpGroup {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.otpInput {
+  width: 48px;
+  height: 56px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: #111827;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.otpInput:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* Ẩn nút tăng giảm số mặc định của trình duyệt */
+.otpInput::-webkit-outer-spin-button,
+.otpInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.otpInput[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.buttonPrimary {
+  width: 100%;
+  padding: 0.875rem;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.buttonPrimary:hover {
+  background-color: #4338ca;
+}
+
+.buttonPrimary:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.resendContainer {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.resendLink {
+  color: #4f46e5;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  margin-left: 4px;
+}
+
+.resendLink:hover {
+  text-decoration: underline;
+}
+
+.resendLink:disabled {
+  color: #9ca3af;
+  cursor: default;
+  text-decoration: none;
+}
+.successMessage {
+  position: absolute;
+  top: 15%;
+  color: hsl(145, 63%, 42%);
+  background-color: #e8f8f5;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 1.5rem;
+    width: 90%;
+  }
+  
+  .otpInput {
+    width: 40px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+}
