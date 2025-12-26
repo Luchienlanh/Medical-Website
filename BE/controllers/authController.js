@@ -5,7 +5,7 @@ import { Role } from '../models/auth/Role.js';
 import dotenv from 'dotenv';
 import { loginSchema, resetPasswordRequestSchema, resetPasswordSchema, signUpSchema, updatePasswordSchema } from '../validators/auth/authValidator.js';
 import { OTP } from '../models/auth/OTP.js';
-import { generateOTP } from '../utils/otpGenerator.js';
+import { generateOTP } from '../utils/generateOTP.js';
 import { sendOTPEmail } from '../utils/emailService.js';
 
 dotenv.config();
@@ -53,7 +53,7 @@ export const registerUser = async (req, res, next) => {
 }
 
 export const loginUser = async (req, res, next) => {
-    const { userName, passWord } = req.body;
+    const { email, userName, passWord } = req.body;
     try {
         const { value, error } = loginSchema.validate(req.body);
         if (error) {
@@ -62,7 +62,8 @@ export const loginUser = async (req, res, next) => {
             });
         }
 
-        const user = await User.findOne({ userName });
+        const user = await User.findOne({ email});
+        
         if (!user || !(await bcrypt.compare(passWord, user.passWord))) {
             return res.status(400).json({
                 message: 'Tên đăng nhập hoặc mật khẩu không chính xác!'
@@ -136,7 +137,7 @@ export const resetPassword = async (req, res, next) => {
             });
         }
 
-        const hashPassword = bcrypt.hash(newPassword, 10);
+        const hashPassword = await bcrypt.hash(newPassword, 10);
         user.passWord = hashPassword;
         await user.save();
 
