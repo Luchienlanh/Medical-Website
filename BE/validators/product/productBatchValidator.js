@@ -1,14 +1,12 @@
 export const createProductBatchSchema = Joi.object({
     productId: Joi.string()
-    .required()
+    .optional()
     .messages({
-        'any.required': 'Mã sản phẩm là bắt buộc!',
         'string.empty': 'Mã sản phẩm không được để trống!'
     }),
     purchaseInvoiceId: Joi.string()
-    .required()
+    .optional()
     .messages({
-        'any.required': 'Mã hóa đơn nhập hàng là bắt buộc!',
         'string.empty': 'Mã hóa đơn nhập hàng không được để trống!'
     }),
     manufactureDate: Joi.date()
