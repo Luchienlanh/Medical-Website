@@ -7,8 +7,8 @@ export const createProductSchema = Joi.object({
         'any.required': 'Tên sản phẩm là bắt buộc!',
         'string.empty': 'Tên sản phẩm không được để trống!'
     }),
-    manufacturerId: Joi.string().required(),
-    categoryId: Joi.string().required(),
+    manufacturerId: Joi.string().otpional(),
+    categoryId: Joi.string().optional(),
     img: Joi.string().uri().optional(),
     productDesc: Joi.string().optional(),
     packagingType: Joi.string()
