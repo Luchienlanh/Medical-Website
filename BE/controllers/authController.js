@@ -1,7 +1,6 @@
 import bcrypt, { hash } from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { User } from '../models/auth/User.js';
-import { Role } from '../models/auth/Role.js';
 import dotenv from 'dotenv';
 import { loginSchema, resetPasswordRequestSchema, resetPasswordSchema, signUpSchema, updatePasswordSchema } from '../validators/auth/authValidator.js';
 import { OTP } from '../models/auth/OTP.js';
