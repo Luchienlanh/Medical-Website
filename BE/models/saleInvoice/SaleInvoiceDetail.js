@@ -1,9 +1,9 @@
 import mongoose from 'mongoose'
 
 const saleInvoiceDetailSchema = new mongoose.Schema({
-    saleInvoiceId: {type: mongoose.Schema.Types.ObjectId, ref: 'SaleInvoice', required: true},
-    batchId: {type: mongoose.Schema.Types.ObjectId, ref: 'ProductBatch', required: true},
-    productId: {type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true},
+    saleInvoiceId: {type: mongoose.Schema.Types.ObjectId, ref: 'SaleInvoice'},
+    batchId: {type: mongoose.Schema.Types.ObjectId, ref: 'ProductBatch'},
+    productId: {type: mongoose.Schema.Types.ObjectId, ref: 'Product'},
     quantity: {type: Number, required: true},
     unitPrice: {type: Number, required: true},
     totalPrice: {type: Number, required: true}
