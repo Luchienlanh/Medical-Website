@@ -1,6 +1,6 @@
 export const createPaymentValidator = Joi.object({
-    saleInvoiceId: Joi.string().required(),
-    transactionId: Joi.string().required(),
+    saleInvoiceId: Joi.string().optional(),
+    transactionId: Joi.string().optional(),
     paymentMethod: Joi.string()
     .required()
     .valid('Momo', 'ZaloPay', 'VNPAY', 'Cash')

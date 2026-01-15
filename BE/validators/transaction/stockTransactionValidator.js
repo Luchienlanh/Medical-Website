@@ -1,6 +1,6 @@
 export const createStockTransactionValidator = Joi.object({
-    batchId: Joi.string().requird(),
-    warehouseId: Joi.string().required(),
+    batchId: Joi.string().optional(),
+    warehouseId: Joi.string().optional(),
     transactionType: Joi.string()
     .required()
     .valid('IMPORT', 'EXPORT', 'ADJUST')

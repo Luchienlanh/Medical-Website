@@ -1,5 +1,5 @@
 export const createSaleInvoiceValidator = Joi.object({
-    userId: Joi.string().required(),
+    userId: Joi.string().optional(),
     saleDate: Joi.date()
     .default(() => new Date(), 'current date'),
     statusId: Joi.string().required()

@@ -1,5 +1,5 @@
 export const createPurchaseInvoiceValidator = Joi.object({
-    manufacturerId: Joi.string().required(),
+    manufacturerId: Joi.string().optional(),
     dateImport: Joi.date()
     .required()
     .messages({

@@ -1,7 +1,7 @@
 export const createSaleInvoiceDetailValidator = Joi.object({
-    saleInvoiceId: Ji.string().required(),
-    batchId: Joi.string().required(),
-    productId: Joi.string().required(),
+    saleInvoiceId: Ji.string().optional(),
+    batchId: Joi.string().optional(),
+    productId: Joi.string().optional(),
     quantity: Joi.number()
     .required()
     .min(1)
