@@ -1,4 +1,5 @@
 import Joi from "joi"
+import { createPurchaseInvoiceValidator } from "./purchaseInvoiceValidator";
 
 export const createPurchaseInvoiceValidator = Joi.object({
     manufacturerId: Joi.string().optional(),
@@ -8,12 +9,14 @@ export const createPurchaseInvoiceValidator = Joi.object({
         'date.base': 'Ngày nhập không hợp lệ!',
         'any.required': 'Ngày nhập là bắt buộc!'
     }),
-    totalBill: Joi.number()
+    details: Joi.array()
+    .items(createPurchaseInvoiceValidator)
     .min(1)
+    .required()
     .messages({
-        'number.base': 'Tổng hóa đơn phải là một số!',
-        'number.min': 'Tổng hóa đơn phải lớn hơn hoặc bằng 1đ!'
-    })
+        'any.base': 'Chi tiết hóa đơn không hợp lệ!',
+        'array.min': 'Chi tiết hóa đơn phải có ít nhất 1 sản phẩm!',
+    })    
 })
 
 export const updatePurchaseInvoiceValidator = Joi.object({
@@ -22,11 +25,12 @@ export const updatePurchaseInvoiceValidator = Joi.object({
         'date.base': 'Ngày nhập không hợp lệ!'
     })
     .optional(),
-    totalBill: Joi.number()
+    details: Joi.array()
+    .items(createPurchaseInvoiceValidator)
     .min(1)
-    .messages({ 
-        'number.base': 'Tổng hóa đơn phải là một số!',
-        'number.min': 'Tổng hóa đơn phải lớn hơn hoặc bằng 1đ!'
-    })
     .optional()
+    .messages({
+        'any.base': 'Chi tiết hóa đơn không hợp lệ!',
+        'array.min': 'Chi tiết hóa đơn phải có ít nhất 1 sản phẩm!',
+    })
 })
