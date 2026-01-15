@@ -1,3 +1,5 @@
+import Joi from "joi"
+
 export const createManufacturerSchema = Joi.object({
     manufacturerName: Joi.string()
     .required()

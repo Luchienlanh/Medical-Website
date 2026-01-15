@@ -1,3 +1,5 @@
+import Joi from "joi"
+
 export const createSaleInvoiceValidator = Joi.object({
     userId: Joi.string().optional(),
     saleDate: Joi.date()

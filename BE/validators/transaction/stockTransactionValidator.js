@@ -1,3 +1,5 @@
+import Joi from "joi"
+
 export const createStockTransactionValidator = Joi.object({
     batchId: Joi.string().optional(),
     warehouseId: Joi.string().optional(),
@@ -12,7 +14,7 @@ export const createStockTransactionValidator = Joi.object({
     quantity: Joi.number()
     .required()
     .min(1)
-    .mesages({
+    .messages({
         'number.base': 'Số lượng phải là một số!',
         'any.required': 'Số lượng là bắt buộc!'
     }),

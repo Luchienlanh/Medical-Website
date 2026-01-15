@@ -1,3 +1,5 @@
+import Joi from "joi"
+
 export const createWarehouseSchema = Joi.object({
     warehouseName: Joi.string()
     .required()

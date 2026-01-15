@@ -1,3 +1,5 @@
+import Joi from "joi"
+
 export const createPaymentValidator = Joi.object({
     saleInvoiceId: Joi.string().optional(),
     transactionId: Joi.string().optional(),

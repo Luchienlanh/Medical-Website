@@ -1,5 +1,7 @@
+import Joi from "joi"
+
 export const createSaleInvoiceDetailValidator = Joi.object({
-    saleInvoiceId: Ji.string().optional(),
+    saleInvoiceId: Joi.string().optional(),
     batchId: Joi.string().optional(),
     productId: Joi.string().optional(),
     quantity: Joi.number()

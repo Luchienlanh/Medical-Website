@@ -1,3 +1,5 @@
+import Joi from "joi"
+
 export const createProductBatchSchema = Joi.object({
     productId: Joi.string()
     .optional()

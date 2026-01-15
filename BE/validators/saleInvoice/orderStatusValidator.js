@@ -1,3 +1,5 @@
+import Joi from "joi"
+
 export const createOrderStatusValidator = Joi.object({
     statusName: Joi.string()
     .required()
