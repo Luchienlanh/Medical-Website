@@ -4,7 +4,8 @@ export const createCategorySchema = Joi.object({
     .messages({
         'any.required': 'Tên loại sản phẩm là bắt buộc!',
         'string.empty': 'Tên loại sản phẩm không được để trống!'
-    })
+    }),
+    description: Joi.string()
 })
 
 export const updateCategorySchema = Joi.object({
@@ -12,5 +13,6 @@ export const updateCategorySchema = Joi.object({
     .optional()
     .messages({
         'string.empty': 'Tên loại sản phẩm không được để trống!'
-    })
+    }),
+    description: Joi.string().optional()
 })
