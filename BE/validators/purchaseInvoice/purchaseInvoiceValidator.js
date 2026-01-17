@@ -1,5 +1,5 @@
 import Joi from "joi"
-import { createPurchaseInvoiceValidator } from "./purchaseInvoiceValidator";
+import { createPurchaseInvoiceDetailValidator } from "./purchaseInvoiceDetailValidator";
 
 export const createPurchaseInvoiceValidator = Joi.object({
     manufacturerId: Joi.string().optional(),
@@ -10,7 +10,7 @@ export const createPurchaseInvoiceValidator = Joi.object({
         'any.required': 'Ngày nhập là bắt buộc!'
     }),
     details: Joi.array()
-    .items(createPurchaseInvoiceValidator)
+    .items(createPurchaseInvoiceDetailValidator)
     .min(1)
     .required()
     .messages({
@@ -26,7 +26,7 @@ export const updatePurchaseInvoiceValidator = Joi.object({
     })
     .optional(),
     details: Joi.array()
-    .items(createPurchaseInvoiceValidator)
+    .items(createPurchaseInvoiceDetailValidator)
     .min(1)
     .optional()
     .messages({
