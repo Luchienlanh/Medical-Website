@@ -1,6 +1,8 @@
-import { productSchema } from "../models/product/Product"
-import { createProductSchema, updateProductSchema } from "../validators/product/productValidator";
+import { Product } from "../models/product/Product.js"
+import { createProductSchema, updateProductSchema } from "../validators/product/productValidator.js";
+import { APIFeatures, getPaginationMeta } from "../utils/apiFeatures.js";
 import dotenv from "dotenv"
+import { get } from "mongoose";
 dotenv.config();
 
 export const createProduct = async (req, res, next) => {
@@ -13,13 +15,13 @@ export const createProduct = async (req, res, next) => {
                 message: error.details[0].message
             });
         }
-        const existingProduct = await productSchema.findOne({ productName, packagingType });
+        const existingProduct = await Product.findOne({ productName, packagingType });
         if (existingProduct) {
             return res.status(400).json({
                 message: 'Sản phẩm với tên và loại bao bì này đã tồn tại!'
             });
         }
-        const newProduct = new productSchema({
+        const newProduct = new Product({
             productName,
             img,
             productDes,
@@ -51,13 +53,13 @@ export const updateProduct = async (req, res, next) => {
                 message: error.details[0].message
             });
         }
-        const existingProduct = await productSchema.findOne({ productName, packagingType });
+        const existingProduct = await Product.findOne({ productName, packagingType });
         if (existingProduct && existingProduct._id.toString() !== id) {
             return res.status(400).json({
                 message: 'Sản phẩm với tên và loại bao bì này đã tồn tại!'
             });
         }
-        const updatedProduct = await productSchema.findByIdAndUpdate(id, {
+        const updatedProduct = await Product.findByIdAndUpdate(id, {
             productName,
             img,
             productDes,
@@ -84,7 +86,7 @@ export const updateProduct = async (req, res, next) => {
 export const deleteProduct = async (req, res, next) => {
     const { id } = req.params;
     try {
-        const deleteProd = await productSchema.findByIdAndDelete(id);
+        const deleteProd = await Product.findByIdAndDelete(id);
         if (!deleteProd) {
             return res.status(404).json({
                 message: 'Không tìm thấy sản phẩm để xóa!'
@@ -103,9 +105,9 @@ export const deleteProduct = async (req, res, next) => {
 export const getProductById = async (req, res, next) => {
     const { id } = req.params;
     try {
-        const products = await productSchema.findById(id);
+        const products = await Product.findById(id);
         if (!products) {
-            return res.status(400).json({
+            return res.status(404).json({
                 message: 'Không tìm thấy sản phẩm!'
             });
         }
@@ -122,11 +124,11 @@ export const getProductById = async (req, res, next) => {
 export const getProductByName = async (req, res, next) => {
     const { productName } = req.params;
     try {
-        const products = await productSchema.find({ 
+        const products = await Product.find({ 
             productName: { $regex: productName, $options: 'i' }
         });
         if (!products) {
-            return res.status(400).json({
+            return res.status(404).json({
                 messages: 'Không tìm thấy sản phẩm!'
             });
         }
@@ -141,5 +143,35 @@ export const getProductByName = async (req, res, next) => {
 }
 
 export const getAllProduct = async (req, res, next) => {
-    
+    try {
+        if (!req.query.sort) {
+            req.query.sort = 'productName';
+        }
+        const apiFeatures = new APIFeatures(Product.find(), req.query)
+            .filter()
+            .search(['productName', 'packagingType'])
+            .sort()
+            .paginate();
+        const products = await apiFeatures.query
+            .populate('categoryId')
+            .populate('manufacturerId');
+
+        const countProduct = new APIFeatures(Product.find(), req.query)
+            .filter()
+            .search(['productName', 'packagingType']);
+        const totalProducts = await Product.countDocuments(countProduct.query.getFilter());
+
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 10;
+        const pagination = getPaginationMeta(totalProducts, page, limit);
+
+        return res.status(200).json({
+            message: 'Lấy danh sách sản phẩm thành công!',
+            products,
+            pagination
+        });
+    } catch(error) {
+        console.error("Lỗi lấy danh sách sản phẩm:", error);
+        return next(error);
+    }
 }
