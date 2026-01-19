@@ -1,6 +1,6 @@
-import { Category } from '../models/categoryModel.js';
-import asyncHandler from 'express-async-handler';
-import { createCategorySchema, updateCategorySchema } from '../validators/categoryValidator.js';
+import { Category } from '../models/product/Category.js';
+import { APIFeatures, getPaginationMeta } from '../utils/apiFeatures.js';
+import { createCategorySchema, updateCategorySchema } from '../validators/product/categoryValidator.js';
 
 export const createCategory = async (req, res, next) => {
     const { categoryName, description } = req.body;
@@ -41,7 +41,7 @@ export const updateCategory = async (req, res, next) => {
             description
         }, { new: true });
         if (!updateCategory) {
-            return res.status(400).json({
+            return res.status(404).json({
                 message: "Loại sản phẩm không tồn tại!"
             });
         }
@@ -60,7 +60,7 @@ export const deleteCategory = async (req, res, next) => {
     try {
         const deleteCategory = await Category.findByIdAndDelete(id);
         if (!deleteCategory) {
-            return res.status(400).json({
+            return res.status(404).json({
                 message: "Loại sản phẩm không tồn tại!"
             });
         }
@@ -70,6 +70,34 @@ export const deleteCategory = async (req, res, next) => {
         });
     } catch(error) {
         console.error("Lỗi xóa loại sản phẩm!", error);
+        return next(error);
+    }
+}
+
+export const getAllCategories = async (req, res, next) => {
+    try {
+        const apiFeatures = new APIFeatures(Category.find(), req.query)
+            .filter()
+            .sort()
+            .paginate();
+
+        const categories = await apiFeatures.query;
+        const countCategories = new APIFeatures(Category.find(), req.query)
+            .filter()
+            .search(['categoryName']);
+        const totalCategories = await Category.countDocuments(countCategories.query.getFilter());
+
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 10;
+        const pagination = getPaginationMeta(totalCategories, page, limit);
+
+        return res.status(200).json({
+            message: 'Lấy danh sách loại sản phẩm thành công!',
+            categories,
+            pagination
+        });
+    } catch(error) {
+        console.error('Lỗi khi lấy danh sách loại sản phẩm:', error);
         return next(error);
     }
 }
