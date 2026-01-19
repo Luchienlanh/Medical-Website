@@ -96,7 +96,7 @@ export const resetPasswordRequest = async (req, res, next) => {
         }
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(400).json({
+            return res.status(404).json({
                 message: 'Email không tồn tại trong hệ thống!'
             });
         }
@@ -131,7 +131,7 @@ export const resetPassword = async (req, res, next) => {
         }
         const user = await User.findOne({ email});
         if (!user) {
-            return res.status(400).json({
+            return res.status(404).json({
                 message: 'Người dùng không tồn tại!'
             });
         }
@@ -163,7 +163,7 @@ export const updatePassword = async (req, res, next) => {
         const userId = req.user?._id;
         const user = await User.findById(userId);
         if (!user) {
-            return res.status(400).json({
+            return res.status(404).json({
                 message: 'Người dùng không tồn tại!'
             });
         }
