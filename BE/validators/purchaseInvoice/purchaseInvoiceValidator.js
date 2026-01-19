@@ -1,5 +1,5 @@
 import Joi from "joi"
-import { createPurchaseInvoiceDetailValidator } from "./purchaseInvoiceDetailValidator";
+import { createPurchaseInvoiceDetailValidator } from "./purchaseInvoiceDetailValidator.js";
 
 export const createPurchaseInvoiceValidator = Joi.object({
     manufacturerId: Joi.string().optional(),

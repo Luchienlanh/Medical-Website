@@ -4,7 +4,7 @@ import { createSaleInvoiceDetailValidator } from "./saleInvoiceDetailValidator.j
 export const createSaleInvoiceValidator = Joi.object({
     userId: Joi.string().optional(),
     saleDate: Joi.date()
-    .default(() => new Date(), 'current date'),
+    .default(() => new Date()),
     statusId: Joi.string().optional(),
     details: Joi.array()
     .items(createSaleInvoiceDetailValidator)
